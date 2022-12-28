@@ -1,13 +1,12 @@
 // SPDX-License-Identifier: SEE LICENSE IN LICENSE
-pragma solidity 0.8.7;
+pragma solidity ^0.8.7;
+
 /**
  * Contract can call other contracts in 2 ways.
  * The easiest way to is to just call it, like A.foo(x, y, z).
  * Another way to call other contracts is to use the low-level call.
  * This method is not recommended.
  */
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.17;
 
 contract Callee {
     uint public x;

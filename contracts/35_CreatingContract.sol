@@ -1,12 +1,10 @@
 // SPDX-License-Identifier: SEE LICENSE IN LICENSE
-pragma solidity 0.8.7;
+pragma solidity ^0.8.7;
 /**
  * Contracts can be created by other contracts using the new keyword.
  * Since 0.8.0, new keyword supports create2 feature by specifying salt options.
  */
 
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.17;
 
 contract Car {
     address public owner;
