@@ -1,4 +1,8 @@
 // SPDX-License-Identifier: MIT
+/**
+ * abi.encode encodes data into bytes.
+ * abi.decode decodes bytes back into data.
+ */
 pragma solidity ^0.8.17;
 
 interface IERC20 {
@@ -37,5 +41,40 @@ contract AbiEncode {
     ) external pure returns (bytes memory) {
         // Typo and type errors will not compile
         return abi.encodeCall(IERC20.transfer, (to, amount));
+    }
+}
+
+contract AbiDecode {
+    struct MyStruct {
+        string name;
+        uint[2] nums;
+    }
+
+    function encode(
+        uint x,
+        address addr,
+        uint[] calldata arr,
+        MyStruct calldata myStruct
+    ) external pure returns (bytes memory) {
+        return abi.encode(x, addr, arr, myStruct);
+    }
+
+    function decode(
+        bytes calldata data
+    )
+        external
+        pure
+        returns (
+            uint x,
+            address addr,
+            uint[] memory arr,
+            MyStruct memory myStruct
+        )
+    {
+        // (uint x, address addr, uint[] memory arr, MyStruct myStruct) = ...
+        (x, addr, arr, myStruct) = abi.decode(
+            data,
+            (uint, address, uint[], MyStruct)
+        );
     }
 }
